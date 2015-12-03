@@ -1,0 +1,17 @@
+{
+  "name": "treasure_quest",
+  "version": "0.1.0",
+  "description": "A betting game where you dig treasures and monsters",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Pixi.js",
+    "Gamesys",
+    "HTML5",
+    "fun"
+  ],
+  "author": "Johan Lajili",
+  "license": "ISC"
+}
