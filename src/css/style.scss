@@ -1,18 +1,49 @@
-
+$loaderColor1 : #2044b9;
+$loaderColor2 : #5d9fdc;
 body {
 	background: linear-gradient(to bottom, rgb(128, 228, 239) 0%, rgb(17, 108, 187) 100%);
 	display: flex;
 	flex-direction: column;
 	.game-frame {
+		position: relative;
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		margin : 100px 50px;
+		margin : 5vh;
 		.game {
 			background: linear-gradient(to bottom right,rgb(40, 40, 41) 0%, rgb(14, 14, 14) 100%);
 			box-shadow: 0 0 7px rgb(170, 176, 226);
+		}
+		.progress-bar {
+			position: absolute;
+			width: 60%;
+			height: 50px;
+			left: 20%;
+			top: calc(50% - 25px);
+			background: black;
+			overflow: hidden;
+			border-radius: 50px;
+			.content {
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 50px;
+				background-image: linear-gradient(
+			        135deg,
+			        $loaderColor1 25%,
+			        $loaderColor2 25%,
+			        $loaderColor2 50%,
+			        $loaderColor1 50%,
+			        $loaderColor1 75%,
+			        $loaderColor2 75%,
+			        $loaderColor2
+			    );
+				background-size: 30px 30px;
+
+			}
 		}
 	}
 

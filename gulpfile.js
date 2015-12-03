@@ -12,6 +12,8 @@ var brfs         = require('brfs');
 var babel        = require('babelify');
 var source       = require('vinyl-source-stream');
 var listImages   = require('./gulp/listImages');
+var sourcemaps = require('gulp-sourcemaps');
+
 var environement = {
 	production: "production",
 	staging: "staging"
@@ -60,6 +62,9 @@ function createTasks(env, path){
     	    fullPaths: env == environement.staging
     	})
     	.bundle()
+    	.on('error', function(err){
+    	      console.log(err.message);
+    	    })
     	.pipe(source("bundle.js"))
     	.pipe(gulp.dest(path + partials.RESOURCES))
     	.pipe(browserSync.stream());
