@@ -13,5 +13,21 @@
     "fun"
   ],
   "author": "Johan Lajili",
-  "license": "ISC"
+  "license": "ISC",
+
+  "devDependencies": {
+    "browser-sync": "^2.9.12",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.1.0",
+    "run-sequence": "^1.1.4",
+    "babelify": "~6.3.0",
+    "browserify": "~11.2.0",
+    "gulp-uglify": "~1.4.1",
+    "gulp-streamify": "~1.0.2",
+    "brfs": "~1.4.1",
+    "vinyl-source-stream": "~1.1.0"
+  }
 }
