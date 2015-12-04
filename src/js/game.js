@@ -7,9 +7,12 @@ class Game{
 	constructor(){
 		let that = this;
 		that.canvas = document.querySelector("canvas");
-		that.renderer = new PIXI.WebGLRenderer(1456, 819, {view: that.canvas});
+		this.width = 1456;
+		this.height = 819
+		that.renderer = new PIXI.WebGLRenderer(this.width, this.height, {view: that.canvas});
 		that.stage = new PIXI.Container();
 		var sprite = new PIXI.Sprite.fromImage('resources/assets/images/background.png');
+		TweenLite.from(sprite, 1, {alpha: 0});
 		that.stage.addChild(sprite);
 
 		function run(){
