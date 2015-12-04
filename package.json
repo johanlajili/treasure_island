@@ -15,6 +15,7 @@
   "author": "Johan Lajili",
   "license": "ISC",
   "dependencies": {
+    "6to5": "^3.6.5",
     "gsap": "~1.18.0"
   },
   "devDependencies": {

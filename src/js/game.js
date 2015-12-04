@@ -2,6 +2,7 @@
 
 let PIXI = require("./libs/pixi.min");
 let Menu = require("./states/Menu");
+let Gameplay = require("./states/Gameplay");
 let TweenLite = require("gsap/src/uncompressed/TweenLite");
 class Game{
 	constructor(){
@@ -21,14 +22,25 @@ class Game{
 		}
 		requestAnimationFrame(run);
 		this.createStates();
-		this.drawState("menu");
+		this.changeState("menu");
 	}
 	createStates(){
 		this.states = {};
 		this.states.menu = new Menu(this);
+		this.states.gameplay = new Gameplay(this);
 	}
 	drawState(stateName){
 		this.states[stateName].draw();
+	}
+	changeState(stateName){
+		var promises = [];
+		if (this.currentState){
+			promises.push(this.states[this.currentState].clean());
+		}
+		Promise.all(promises).then(()=>{
+			this.currentState = stateName;
+			this.drawState(stateName);
+		});
 	}
 }
 

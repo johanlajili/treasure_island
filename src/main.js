@@ -1,4 +1,7 @@
 "use strict";
+
+let es6Polyfill = require('6to5/polyfill');
+
 let resizer = require("./js/resizer");
 let preloader = require("./js/preloader");
 let progressBar = require("./js/progressBar");

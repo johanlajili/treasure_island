@@ -1,6 +1,7 @@
 "use strict";
 let PIXI = require("../libs/pixi.min");
 let TweenLite = require("gsap/src/uncompressed/TweenLite");
+let TimelineMax = require("gsap/src/uncompressed/TimelineMax");
 let easing = require("gsap/src/uncompressed/easing/EasePack");
 let balance = require("../balance.json");
 let audioManager = require("../audioManager");
@@ -123,6 +124,7 @@ class Menu {
 
         });
         window.texts = this.texts;
+        window.sprites =this.sprites;
 
     }
 
@@ -158,7 +160,14 @@ class Menu {
     	setTimeout(()=>{
     		//hack to wait for the font to be properly loaded;
         	this.refreshTexts();
-    	}, 2000)
+    	}, 2000);
+    	setTimeout(()=>{
+    	    this.shakeTitle = new TimelineMax({"repeat": Infinity});
+
+	    	this.shakeTitle.to(this.sprites.title_treasure, 0.2, {rotation: 0.1}, "+=3");
+	    	this.shakeTitle.to(this.sprites.title_treasure, 0.4, {rotation: -0.1});
+	    	this.shakeTitle.to(this.sprites.title_treasure, 0.2, {rotation: 0});
+	    }, 5000);
     }
 
     listenToInteractivity(){
@@ -186,7 +195,8 @@ class Menu {
 		playButton.click = () =>{
 			audioManager.playSound("resources/assets/audio/yeah.mp3");
 			audioManager.stopMusic();
-			TweenLite.to(this.stateContainer.position, 4, {y: this.game.height, delay: 0.5, ease: Power4.easeOut});
+			this.game.changeState("gameplay");
+			
 		};
 
     }
@@ -205,6 +215,18 @@ class Menu {
     	this.texts.jewelValue.text = 0.2*currentTicketValue + "£";
     	this.texts.ticketValue.text = currentTicketValue + "£";
     	this.texts.upToValue.text = 8*currentTicketValue + "£";
+    }
+    clean(){
+    	return new Promise((resolve, reject)=>{
+    		this.shakeTitle.stop();
+	    	TweenLite.to(this.stateContainer.position, 4, {y: this.game.height, delay: 0.5, ease: Power4.easeOut, onComplete: ()=>{
+	    		this.game.stage.removeChild(this.stateContainer);
+	    	}});
+	    	setTimeout(()=>{
+	    		//don't wait for completion of the tween to start next scene;
+	    		resolve();
+	    	}, 2000);
+    	});
     }
 }
 
