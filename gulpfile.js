@@ -55,7 +55,9 @@ function createTasks(env, path){
 
     	return browserify({
     	    entries: [paths.ENTRY_POINT],
-    	    transform: [listImages, brfs, babel],
+    	    transform: [listImages, brfs, babel.configure({
+                ignore: /libs.+/
+            })],
     	    debug: env == environement.staging,
     	    cache: {},
     	    packageCache: {},
