@@ -8,7 +8,7 @@ class Game{
 		let that = this;
 		that.canvas = document.querySelector("canvas");
 		this.width = 1456;
-		this.height = 819
+		this.height = 819;
 		that.renderer = new PIXI.WebGLRenderer(this.width, this.height, {view: that.canvas});
 		that.stage = new PIXI.Container();
 		var sprite = new PIXI.Sprite.fromImage('resources/assets/images/background.png');
