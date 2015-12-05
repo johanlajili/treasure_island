@@ -185,14 +185,14 @@ class Menu {
 			data.target.scale.x = 1;
 			data.target.scale.y = 1;
 		};
-		leftArrow.click = () =>{
+		leftArrow.click = leftArrow.tap = () =>{
 			this.changeTicketValue(-1);
 
 		};
-		rightArrow.click = () =>{
+		rightArrow.click = rightArrow.tap = () =>{
 			this.changeTicketValue(1);
 		};
-		playButton.click = () =>{
+		playButton.click = playButton.tap = () =>{
 			audioManager.playSound("resources/assets/audio/yeah.mp3");
 			audioManager.stopMusic();
 			this.game.changeState("gameplay");

@@ -1,10 +1,9 @@
 "use strict";
 class MoneyManager{
 	constructor(){
-		this.money = localStorage.getItem("money");
-		if (!this.money){
-			this.changeMoney(100);
-		}
+
+		this.money = 0;
+		this.changeMoney(100);
 		
 		
 		document.querySelector(".deposit").addEventListener("click", ()=>{
@@ -16,7 +15,6 @@ class MoneyManager{
 	}
 	changeMoney(value){
 		this.money = Math.min(value, 150);
-		localStorage.setItem("money", this.money);
 		this.updateText();
 	}
 

@@ -30,7 +30,8 @@ class ProgressBar{
 			TweenLite.to(this.progressBarElement, 1, {
 				delay: 0.5,
 				scale: 1.2,
-				opacity: 0
+				opacity: 0,
+				display: "none"
 			});
 		}
 	}

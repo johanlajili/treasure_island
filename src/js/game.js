@@ -10,7 +10,7 @@ class Game{
 		that.canvas = document.querySelector("canvas");
 		this.width = 1456;
 		this.height = 819;
-		that.renderer = new PIXI.WebGLRenderer(this.width, this.height, {view: that.canvas});
+		that.renderer = new PIXI.autoDetectRenderer(this.width, this.height, {view: that.canvas});
 		that.stage = new PIXI.Container();
 		var sprite = new PIXI.Sprite.fromImage('resources/assets/images/background.png');
 		TweenLite.from(sprite, 1, {alpha: 0});
@@ -22,7 +22,7 @@ class Game{
 		}
 		requestAnimationFrame(run);
 		this.createStates();
-		this.changeState("menu");
+		this.changeState("gameplay");
 	}
 	createStates(){
 		this.states = {};

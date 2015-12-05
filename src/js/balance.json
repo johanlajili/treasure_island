@@ -1,3 +1,8 @@
 {
-	"ticketValues" : [1, 2, 5, 10, 25, 50, 100]
+	"ticketValues" : [1, 2, 5, 10, 25, 50, 100],
+	"items" :{
+		"jewel" : 10,
+		"star" : 1,
+		"skull" : 2
+	}
 }
