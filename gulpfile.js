@@ -12,6 +12,7 @@ var brfs         = require('brfs');
 var babel        = require('babelify');
 var source       = require('vinyl-source-stream');
 var listImages   = require('./gulp/listImages');
+var listAudio   = require('./gulp/listAudio');
 var sourcemaps = require('gulp-sourcemaps');
 
 var environement = {
@@ -55,7 +56,7 @@ function createTasks(env, path){
 
     	return browserify({
     	    entries: [paths.ENTRY_POINT],
-    	    transform: [listImages, brfs, babel.configure({
+    	    transform: [listImages, listAudio, brfs, babel.configure({
                 ignore: /libs.+/
             })],
     	    debug: env == environement.staging,

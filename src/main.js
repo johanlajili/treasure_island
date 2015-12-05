@@ -10,6 +10,7 @@ let moneyManager = require("./js/moneyManager");
 let Game = require("./js/Game");
 
 const IMAGES = ("$IMAGES").split(",");
+const AUDIO = ("$AUDIO").split(",");
 
 function createGame(){
 	var game = new Game({
@@ -20,6 +21,7 @@ function createGame(){
 }
 
 preloader.addImagesToPreload(IMAGES);
+preloader.addAudioToPreload(AUDIO);
 moneyManager.updateText();
 preloader.onLoading((loadedNumber, total)=>{
 	progressBar.moveTo(loadedNumber, total);
