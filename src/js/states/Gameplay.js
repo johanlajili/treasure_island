@@ -141,7 +141,7 @@ class Gameplay {
     	}}, 0.05);
         TweenLite.from(this.sprites.stop, 1, {x: this.game.width + 200, delay: 11});
     	TweenLite.from(this.sprites.start, 2, {x: "+=" + this.game.width, delay: 8, ease: "Power4.easeIn"});
-        TweenLite.to(this.sprites.start, 2, {x: "-=" + this.game.width, delay: 12, ease: "Power4.easeOut"});
+        TweenLite.to(this.sprites.start, 2, {x: "-=" + this.game.width, delay: 11, ease: "Power4.easeOut"});
         setTimeout(()=>{
             this.interactive = true;
             audioManager.playMusic("resources/assets/audio/game.mp3");
@@ -189,7 +189,8 @@ class Gameplay {
                                         audioManager.playSound("resources/assets/audio/gameover.wav");
 
                                         this.earnedMoneyValue = 0;
-                                        this.game.changeState("menu");
+                                        this.quit();
+                                        
                                     }
                                     this.stateContainer.removeChild(item);
                                     this.refreshTexts();
@@ -203,11 +204,12 @@ class Gameplay {
                 }
    			};
    		});
+        this.sprites.stop.interactive = true;
         this.sprites.stop.click = this.sprites.stop.tap = (event) =>{
             if (this.interactive){
                 this.interactive = false;
-                this.game.addMoney(this.earnedMoney);
-                this.game.changeState("menu");
+                this.game.addMoney(this.earnedMoneyValue);
+                this.quit();
             }
         };
 
@@ -261,6 +263,11 @@ class Gameplay {
     }
     refreshTexts(){
         this.texts.earnedMoney.text = this.earnedMoneyValue + "£";
+    }
+    quit(){
+        this.game.changeState("menu", {
+            noAnimation: true
+        });
     }
     clean(){
         audioManager.stopMusic();

@@ -128,7 +128,7 @@ class Menu {
 
     }
 
-    draw() {
+    draw(args = {}) {
     	audioManager.playMusic("resources/assets/audio/menu.mp3");
         this.stateContainer = new PIXI.Container();
         this.game.stage.addChild(this.stateContainer);
@@ -138,29 +138,34 @@ class Menu {
         MENU_TEXTS.forEach((object) =>{
         	 this.stateContainer.addChild(this.texts[object.name]); 
         });
-        this.animate();
+        this.animate(args);
         this.listenToInteractivity();
     }
 
-    animate(){
-    	TweenLite.from(this.sprites.title_treasure.position, 3, {y: -600, ease: "Power3.easeIn"} );
-    	TweenLite.from(this.sprites.title_island.position, 3, {x: this.game.width + 400, ease: "Power3.easeIn", delay: 1.5} );
-    	TweenLite.from(this.sprites.treasure.position, 2, {y: -600, ease: "Bounce.easeInOut", delay: 4} );
-    	([this.sprites.instructions,
-    	this.sprites.secondary_instructions,
-    	this.sprites.play_button,
-    	this.sprites.left_arrow,
-    	this.sprites.right_arrow,
-    	this.texts.jewelValue,
-    	this.texts.ticketValue,
-    	this.texts.upToValue
-    	]).forEach((sprite)=>{
-    		TweenLite.from(sprite.position, 2, {x: "-=" + this.game.width, delay: 5, ease: "Power4.easeIn"});
-    	});
-    	setTimeout(()=>{
-    		//hack to wait for the font to be properly loaded;
-        	this.refreshTexts();
-    	}, 2000);
+    animate(args){
+    	if (!args.noAnimation){
+	    	TweenLite.from(this.sprites.title_treasure.position, 3, {y: -600, ease: "Power3.easeIn"} );
+	    	TweenLite.from(this.sprites.title_island.position, 3, {x: this.game.width + 400, ease: "Power3.easeIn", delay: 1.5} );
+	    	TweenLite.from(this.sprites.treasure.position, 2, {y: -600, ease: "Bounce.easeInOut", delay: 4} );
+	    	([this.sprites.instructions,
+	    	this.sprites.secondary_instructions,
+	    	this.sprites.play_button,
+	    	this.sprites.left_arrow,
+	    	this.sprites.right_arrow,
+	    	this.texts.jewelValue,
+	    	this.texts.ticketValue,
+	    	this.texts.upToValue
+	    	]).forEach((sprite)=>{
+	    		TweenLite.from(sprite.position, 2, {x: "-=" + this.game.width, delay: 5, ease: "Power4.easeIn"});
+	    	});
+	    	setTimeout(()=>{
+	    		//hack to wait for the font to be properly loaded;
+	        	this.refreshTexts();
+	    	}, 2000);
+    	} else {
+    		TweenLite.from(this.stateContainer, 1, {alpha: 0});
+    		this.refreshTexts();
+    	}
     	setTimeout(()=>{
     	    this.shakeTitle = new TimelineMax({"repeat": Infinity});
 
