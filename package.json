@@ -1,11 +1,8 @@
 {
-  "name": "treasure_quest",
-  "version": "0.1.0",
-  "description": "A betting game where you dig treasures and monsters",
+  "name": "treasure_island",
+  "version": "1.0.0",
+  "description": "A betting game where you dig treasures and skulls",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "Pixi.js",
     "Gamesys",
@@ -14,6 +11,7 @@
   ],
   "author": "Johan Lajili",
   "license": "ISC",
+  "repository": "https://github.com/johanlajili/treasure_island",
   "dependencies": {
     "6to5": "^3.6.5",
     "gsap": "~1.18.0"
