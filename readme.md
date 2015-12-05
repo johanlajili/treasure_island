@@ -22,7 +22,7 @@ To build into production, run the command
 
     gulp build:production
     
-It will compile the game and put it inside the "production folder". You just have to use your favorite web server on the **production** folder inside the root repository.
+It will compile the game and put it inside the "production folder". You just have to use your favorite web server on the **production** folder inside the root repository. (It has to be on a WebServer, WebGL cannot be used while on file://)
 
 ##Q&A
 To read once you played the game.
