@@ -198,11 +198,15 @@ class Menu {
 			this.changeTicketValue(1);
 		};
 		playButton.click = playButton.tap = () =>{
-    		let currentTicketValue = balance.ticketValues[currentTicketIndex];
-			audioManager.playSound("resources/assets/audio/yeah.mp3");
-			audioManager.stopMusic();
-			this.game.removeMoney(currentTicketValue);
-			this.game.changeState("gameplay", {ticketValue:currentTicketValue});
+			let that = this;
+	    	let currentTicketValue = balance.ticketValues[currentTicketIndex];
+			this.game.removeMoney(currentTicketValue).then(function unfullfilled(){
+				audioManager.playSound("resources/assets/audio/yeah.mp3");
+				audioManager.stopMusic();
+				that.game.changeState("gameplay", {ticketValue:currentTicketValue});
+			}, function onRejected(){
+				audioManager.playSound("resources/assets/audio/nope.wav");
+			});
 			
 		};
 

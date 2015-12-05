@@ -3,7 +3,7 @@ class MoneyManager{
 	constructor(){
 
 		this.money = 0;
-		this.fakeDepositMoney(100);
+		this.fakeDepositMoney(80);
 		
 		
 		document.querySelector(".deposit").addEventListener("click", ()=>{
@@ -18,8 +18,15 @@ class MoneyManager{
 		this.updateText();
 	}
 	addMoney(value){
-		this.money += value;
-		this.updateText();
+		return new Promise((resolve, reject) =>{
+			if (this.money + value < 0){
+				reject();
+			} else {
+				this.money += value;
+				this.updateText();
+				resolve();
+			}
+		});
 	}
 
 }

@@ -14,7 +14,7 @@ const IMAGES = ("$IMAGES").split(",");
 function createGame(){
 	var game = new Game({
 		onChangeMoney: (value)=>{
-			moneyManager.addMoney(value);
+			return moneyManager.addMoney(value);
 		}
 	});
 }

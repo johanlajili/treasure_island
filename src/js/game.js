@@ -46,7 +46,7 @@ class Game{
 	}
 	removeMoney(value){
 		if (this.onChangeMoney){
-			this.onChangeMoney(-value);
+			return this.onChangeMoney(-value);
 		}
 	}
 	changeState(stateName, args = {}){
