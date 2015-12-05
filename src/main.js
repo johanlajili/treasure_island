@@ -12,7 +12,11 @@ let Game = require("./js/Game");
 const IMAGES = ("$IMAGES").split(",");
 
 function createGame(){
-	var game = new Game();
+	var game = new Game({
+		onChangeMoney: (value)=>{
+			moneyManager.addMoney(value);
+		}
+	});
 }
 
 preloader.addImagesToPreload(IMAGES);

@@ -3,18 +3,22 @@ class MoneyManager{
 	constructor(){
 
 		this.money = 0;
-		this.changeMoney(100);
+		this.fakeDepositMoney(100);
 		
 		
 		document.querySelector(".deposit").addEventListener("click", ()=>{
-			this.changeMoney(parseInt(this.money)+20);
+			this.fakeDepositMoney(parseInt(this.money)+20);
 		});
 	}
 	updateText(){
 		document.querySelector(".money").innerText = this.money+"£";
 	}
-	changeMoney(value){
+	fakeDepositMoney(value){
 		this.money = Math.min(value, 150);
+		this.updateText();
+	}
+	addMoney(value){
+		this.money += value;
 		this.updateText();
 	}
 

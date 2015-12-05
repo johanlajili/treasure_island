@@ -193,9 +193,11 @@ class Menu {
 			this.changeTicketValue(1);
 		};
 		playButton.click = playButton.tap = () =>{
+    		let currentTicketValue = balance.ticketValues[currentTicketIndex];
 			audioManager.playSound("resources/assets/audio/yeah.mp3");
 			audioManager.stopMusic();
-			this.game.changeState("gameplay");
+			this.game.removeMoney(currentTicketValue);
+			this.game.changeState("gameplay", {ticketValue:currentTicketValue});
 			
 		};
 
