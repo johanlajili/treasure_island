@@ -70,14 +70,14 @@ const MENU_TEXTS = [
 	{
 		name: "jewelValue",
 		position: {
-			x:287,
-			y:595
+			x:357,
+			y:599
 		},
 		font:  "50px Impact",
 		color: "white",
 		strokeColor: "black",
 		strokeThickness: 4,
-		align: "center"
+		align: "left"
 	},
 	{
 		name: "ticketValue",
